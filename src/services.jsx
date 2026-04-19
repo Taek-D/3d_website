@@ -34,14 +34,14 @@ const SERVICES = [
 function Services() {
   const [ref, inView] = useInView();
   return (
-    <section className="section" id="services" aria-labelledby="services-heading" style={{ background: "var(--bg-2)" }}>
+    <section className="section" id="services" style={{ background: "var(--bg-2)" }}>
       <div className="services">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 80, gap: 40, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 80 }}>
           <div>
             <div className={`section-label reveal ${inView ? "in" : ""}`} ref={ref}>
               <span>02 — What we do</span>
             </div>
-            <h2 id="services-heading" className={`works-title reveal ${inView ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
+            <h2 className={`works-title reveal ${inView ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
               Five disciplines,<br/>
               <span className="italic">one studio.</span>
             </h2>
@@ -51,19 +51,19 @@ function Services() {
           </p>
         </div>
 
-        <ol className="services-grid" role="list">
+        <div className="services-grid">
           {SERVICES.map((s) => (
-            <li key={s.num} className="service-row" tabIndex={0}>
-              <div className="service-num" aria-hidden="true">{s.num} /</div>
-              <h3 className="service-title">{s.title}</h3>
-              <p className="service-desc">{s.desc}</p>
-              <ul className="service-tags" aria-label={`${s.title} capabilities`}>
-                {s.tags.map((t) => <li key={t}>— {t}</li>)}
-              </ul>
-              <div className="service-arrow" aria-hidden="true">→</div>
-            </li>
+            <div key={s.num} className="service-row">
+              <div className="service-num">{s.num} /</div>
+              <div className="service-title">{s.title}</div>
+              <div className="service-desc">{s.desc}</div>
+              <div className="service-tags">
+                {s.tags.map((t, i) => <div key={i}>— {t}</div>)}
+              </div>
+              <div className="service-arrow">→</div>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   );

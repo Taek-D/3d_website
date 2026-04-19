@@ -53,27 +53,8 @@ function useMouse() {
   return m;
 }
 
-// Respects the OS-level `prefers-reduced-motion` setting.
-// Components use this to short-circuit parallax, infinite loops, and heavy 3D.
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-  useEffect(() => {
-    if (!window.matchMedia) return;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const onChange = (e) => setReduced(e.matches);
-    mq.addEventListener ? mq.addEventListener("change", onChange) : mq.addListener(onChange);
-    return () => {
-      mq.removeEventListener ? mq.removeEventListener("change", onChange) : mq.removeListener(onChange);
-    };
-  }, []);
-  return reduced;
-}
-
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 function lerp(a, b, t) { return a + (b - a) * t; }
 function map(v, a, b, c, d) { return c + ((v - a) / (b - a)) * (d - c); }
 
-Object.assign(window, { useState, useEffect, useRef, useLayoutEffect, useMemo, useCallback, useScrollY, useInView, useMouse, useReducedMotion, clamp, lerp, map });
+Object.assign(window, { useState, useEffect, useRef, useLayoutEffect, useMemo, useCallback, useScrollY, useInView, useMouse, clamp, lerp, map });

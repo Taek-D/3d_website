@@ -2,10 +2,7 @@ function About() {
   const [ref, inView] = useInView();
   const [ref2, inView2] = useInView();
   return (
-    <section className="section" id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading" className="u-visually-hidden" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>
-        About the studio
-      </h2>
+    <section className="section" id="about">
       <div className="about">
         <div>
           <div className={`section-label reveal ${inView ? "in" : ""}`} ref={ref}>
@@ -27,47 +24,47 @@ function About() {
             <span className="dim">, and who is it actually for?</span>
           </p>
         </div>
-        <aside className="about-side" aria-label="Studio details">
-          <dl className="about-meta">
+        <aside className="about-side">
+          <div className="about-meta">
             <div style={{ marginBottom: 24 }}>
-              <dt className="k">Founded</dt>
-              <dd className="v">2018 — Seoul</dd>
-            </div>
-            <div style={{ marginBottom: 24 }}>
-              <dt className="k">Team</dt>
-              <dd className="v">14 designers, strategists, technologists</dd>
+              <span className="k">Founded</span>
+              <span className="v">2018 — Seoul</span>
             </div>
             <div style={{ marginBottom: 24 }}>
-              <dt className="k">Recognition</dt>
-              <dd className="v">ADC · D&amp;AD · Brand New · Awwwards SOTD ×6</dd>
+              <span className="k">Team</span>
+              <span className="v">14 designers, strategists, technologists</span>
+            </div>
+            <div style={{ marginBottom: 24 }}>
+              <span className="k">Recognition</span>
+              <span className="v">ADC · D&amp;AD · Brand New · Awwwards SOTD ×6</span>
             </div>
             <div>
-              <dt className="k">Now booking</dt>
-              <dd className="v">Q3 — Q4 / 2026</dd>
+              <span className="k">Now booking</span>
+              <span className="v">Q3 — Q4 / 2026</span>
             </div>
-          </dl>
-          <dl className="about-stats">
+          </div>
+          <div className="about-stats">
             <div>
-              <dd className="n">120<span style={{ fontSize: 32 }} aria-hidden="true">+</span></dd>
-              <dt className="l">Projects shipped</dt>
-            </div>
-            <div>
-              <dd className="n">08</dd>
-              <dt className="l">Years of practice</dt>
+              <div className="n">120<span style={{ fontSize: 32 }}>+</span></div>
+              <div className="l">Projects shipped</div>
             </div>
             <div>
-              <dd className="n">32</dd>
-              <dt className="l">Countries reached</dt>
+              <div className="n">08</div>
+              <div className="l">Years of practice</div>
             </div>
             <div>
-              <dd className="n" aria-label="Infinite">∞</dd>
-              <dt className="l">Cups of coffee</dt>
+              <div className="n">32</div>
+              <div className="l">Countries reached</div>
             </div>
-          </dl>
+            <div>
+              <div className="n">∞</div>
+              <div className="l">Cups of coffee</div>
+            </div>
+          </div>
         </aside>
       </div>
 
-      <div style={{ marginTop: 160 }} className="marquee" aria-hidden="true">
+      <div style={{ marginTop: 160 }} className="marquee">
         <div className="marquee-track">
           {Array.from({ length: 2 }).map((_, i) => (
             <React.Fragment key={i}>

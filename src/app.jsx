@@ -4,7 +4,6 @@ function App() {
   const [booting, setBooting] = useState(true);
   const scrollY = useScrollY();
   const mouse = useMouse();
-  const reduced = useReducedMotion();
 
   // Apply tweaks to body data-attrs
   useEffect(() => {
@@ -32,26 +31,23 @@ function App() {
     return () => window.removeEventListener("message", onMsg);
   }, []);
 
-  // Boot curtain (page transition in) — skipped for reduced motion users
+  // Boot curtain (page transition in)
   useEffect(() => {
-    const delay = reduced ? 0 : 1400;
-    const t = setTimeout(() => setBooting(false), delay);
+    const t = setTimeout(() => setBooting(false), 1400);
     return () => clearTimeout(t);
-  }, [reduced]);
+  }, []);
 
   return (
     <>
       {tweaks.cursor && <Cursor />}
-      <div className="grain" aria-hidden="true" />
+      <div className="grain" />
       <BootCurtain visible={booting} />
       <Nav />
-      <main id="main" tabIndex={-1}>
-        <Hero scrollY={scrollY} mouse={mouse} shape={tweaks.shape} />
-        <About />
-        <Services />
-        <Works />
-        <Contact />
-      </main>
+      <Hero scrollY={scrollY} mouse={mouse} shape={tweaks.shape} />
+      <About />
+      <Services />
+      <Works />
+      <Contact />
       <Tweaks tweaks={tweaks} setTweaks={setTweaks} visible={tweaksVisible} />
     </>
   );
@@ -59,25 +55,20 @@ function App() {
 
 function BootCurtain({ visible }) {
   return (
-    <div
-      aria-hidden={!visible}
-      role="status"
-      aria-live="polite"
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "var(--bg)",
-        zIndex: 10002,
-        pointerEvents: visible ? "auto" : "none",
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 1s cubic-bezier(0.7, 0, 0.3, 1)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: 24,
-      }}
-    >
+    <div style={{
+      position: "fixed",
+      inset: 0,
+      background: "var(--bg)",
+      zIndex: 10002,
+      pointerEvents: visible ? "auto" : "none",
+      transform: visible ? "translateY(0)" : "translateY(-100%)",
+      transition: "transform 1s cubic-bezier(0.7, 0, 0.3, 1)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      gap: 24,
+    }}>
       <div style={{
         fontFamily: "var(--serif)",
         fontStyle: "italic",
@@ -86,7 +77,7 @@ function BootCurtain({ visible }) {
         opacity: visible ? 1 : 0,
         transition: "opacity 0.4s",
       }}>
-        atelier—noir<span style={{ color: "var(--accent)" }} aria-hidden="true">*</span>
+        atelier—noir<span style={{ color: "var(--accent)" }}>*</span>
       </div>
       <div style={{
         fontFamily: "var(--mono)",
