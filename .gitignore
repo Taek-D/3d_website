@@ -1,0 +1,48 @@
+# ─────────────── OS / editors ───────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ─────────────── Node / build (future-proofing for Vite migration) ───────────────
+node_modules/
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+.vite/
+.turbo/
+coverage/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ─────────────── Env / secrets ───────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ─────────────── AI tooling local state ───────────────
+# These hold per-machine session data, not shared project state.
+.bkit/
+.omc/
+.claude/
+.cursor/
+.aider*
+.specstory/
+
+# ─────────────── Misc ───────────────
+*.tmp
+.tmp/
+.temp/
